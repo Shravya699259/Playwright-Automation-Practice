@@ -3,12 +3,14 @@ pipeline{
     stages {
         stage('install'){
             steps {
-                sh 'npm ci'
+                bat 'npm install'
             }
         }
         stage('test'){
+
+            
             steps {
-                sh 'npx playwright test'
+                bat 'npx playwright test'
             }
         }
     }
