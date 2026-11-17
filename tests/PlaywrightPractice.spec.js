@@ -121,6 +121,10 @@ const [newPage]=await Promise.all([
      loginPage.getByTestId('btn-open-pw-tab').click()
 
 ])
+//switch between tabs
+console.log(await context.pages());
+const pages = context.pages();
+await pages[0].bringToFront();
 
 await expect(newPage.getByRole('heading',{name : 'Playwright Test'})).toBeVisible();
 
