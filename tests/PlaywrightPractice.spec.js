@@ -11,6 +11,14 @@ await loginPage.getByTestId('dep-dropdown-country').selectOption('India');
 await loginPage.getByTestId('dep-dropdown-state').selectOption('Tamil Nadu');
 await loginPage.getByTestId('dep-dropdown-city').selectOption('Chennai');
 
+
+
+
+
+
+
+     
+
 //single file upload
 await loginPage.getByTestId('upload-single').setInputFiles('Files/playwright interview question2.pdf');
 
