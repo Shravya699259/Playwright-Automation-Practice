@@ -26,6 +26,14 @@ await loginPage.pause();
 
 
 
+
+
+
+
+
+
+     
+
 //single file upload
 await loginPage.getByTestId('upload-single').setInputFiles('Files/playwright interview question2.pdf');
 
