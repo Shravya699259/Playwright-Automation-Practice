@@ -20,7 +20,7 @@ class PracticePage {
         this.bDropdown = page.locator('.bd-select-trigger');
         this.bDropdownOption = page.getByText('Automation Tester');
         this.aDropdown = page.getByPlaceholder('Search for Products');
-        this.aDropdownOption = page.getByText('Smart Watch');
+        this.aDropdownOption = page.getByTestId('autosuggest-results').first();
         this.sDropdown= page.getByTestId('searchable-dropdown-input');
         this.sDropdownOption=page.getByTestId('searchable-selected-value');
         

@@ -6,10 +6,25 @@ const {PracticePage} = require('../Pages/PracticePage.js')
 customtest('Playwright practice',async({loginPage,context})=>{
      /**@type{{loginPage : import('@playwright/test').Page}}*/
   
+  
+
+
+     //multi select
+     await loginPage.getByText('Nike').click({modifiers :['Control']});
+     await loginPage.getByText('Adidas').click({modifiers :['Control']});
+
+     
 //dependent dropdown country
 await loginPage.getByTestId('dep-dropdown-country').selectOption('India');
-await loginPage.getByTestId('dep-dropdown-state').selectOption('Tamil Nadu');
-await loginPage.getByTestId('dep-dropdown-city').selectOption('Chennai');
+await loginPage.getByTestId('dep-dropdown-state').selectOption({label : 'Tamil Nadu'});
+await loginPage.getByTestId('dep-dropdown-city').selectOption({index : 1});
+
+await loginPage.pause();
+
+
+
+
+
 
 //single file upload
 await loginPage.getByTestId('upload-single').setInputFiles('Files/playwright interview question2.pdf');
@@ -43,6 +58,7 @@ const [downloadFile] = await Promise.all([
 
 
 ])
+
 
  
 const download = await downloadFile;
@@ -93,7 +109,9 @@ await loginPage.getByTestId('slider-price').press('Home');
 await loginPage.getByTestId('slider-price').click({position:{x:100,y:0}});
 
 //double slider
-await loginPage.getByTestId('slider-price-min').press('Home');
+await loginPage.getByTestId('slider-price-min').focus();
+//await loginPage.mouse.move(10,0);
+await loginPage.pause();
 
 //keyboard actions
 await loginPage.getByTestId('keyboard-option-qa').click();
@@ -121,6 +139,14 @@ const [newPage]=await Promise.all([
      loginPage.getByTestId('btn-open-pw-tab').click()
 
 ])
+//popup
+const [popupPage] = await Promise.all([
+    loginPage.waitForEvent('popup'),
+    loginPage.getByTestId('btn-open-login-window').click()
+])
+await popupPage.locator('#email').fill('sravyabajoju@gmail.com');
+await loginPage.pause();
+
 //switch between tabs
 console.log(await context.pages());
 const pages = context.pages();
